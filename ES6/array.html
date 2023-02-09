@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>数组扩展</title>
+</head>
+<body>
+    <script>
+        //Array.from, 将对象转成数组。类数组对象下标定义需从0开始，如未定义结果为undefined。需要指定length字段。
+        let object2 = {
+            "0": 1,
+            "1": 2,
+            "3": 5,
+            "4": 6,
+            length: 4
+        }
+        console.log(Array.from(object2))
+        // 实际运用
+        function fun() {
+            console.log(Array.from(arguments))
+        }
+        fun(1,2,"c",4,"e",6)
+
+
+        // 解构
+        let object = {
+            "a": 1,
+            "b": 2,
+            "c": 3,
+            d: 4,
+            e: 5
+        }
+        let object1 = {
+            ...object
+        }
+        console.log(object1)
+
+
+        // reduce方法, 找最大值
+        let array2 = [2,3,4,5,7]
+        let array2_1 = array2.reduce(function(a, b) {
+            if (a > b) {
+                return a
+            } else {
+                return b
+            }
+        })
+        console.log(array2_1)
+
+        // filter方法, 找item为5元素。
+        let array1 = [1,2,3,4,5]
+        let a1 = array1.filter(function(item){
+            return item == 5
+        })
+        console.log(a1)
+    </script>
+</body>
+</html>
