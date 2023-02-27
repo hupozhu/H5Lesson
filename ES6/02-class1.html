@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //2、new.target
+        function B(name) {
+            console.log(new.target)
+            if (new.target !== undefined) {
+                this.name = name
+            } else {
+                throw new Error("必须使用new生成实例！")
+            }
+        }
+        // B() // 报错
+        new B()
+
+        //1、getter 和 setter 和 static
+        // 只有静态方法，没有静态属性
+        class A {
+            static classMethod() {
+                console.log("static fun")
+            }
+            constructor(){}
+            get prop() {
+                console.log("get")
+            }
+            set prop(value){
+                console.log("set")
+            }
+        }
+        let a = new A()
+        a.prop = 1
+        A.classMethod()
+    </script>
+</body>
+</html>

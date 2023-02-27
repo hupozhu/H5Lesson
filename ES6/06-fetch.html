@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="button">点击发请求</button>
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        // fetch 返回也是一个promise对象，主要用在浏览器端使用，发送请求，支持多种请求，有不同的方法获取body返回值。
+        // fetch 是 js预言中 包含对XMLHTTPRequest的封装。
+        // 与 jQuery.ajax 的不同。
+        // 接收错误的HTTP状态码，fetch 返回的 Promise不会被标记成reject，除非网络故障或者请求停止。
+        // fetch 可接收 跨域cookie会话，fetch不发送cookie。
+        // 如果想在node中使用，得引入三方插件 node-fetch
+        $(".button").click(()=> {
+            console.log(123)
+            fetch("https://www.baidu.com/", {
+                method: "get",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: ""               
+             }).then(response=> {
+                console.log(response.text)
+             }).catch(reason=> {
+                console.log(reason.text)
+            })
+        })
+
+        function readFile() {
+            // console.log(fetch("./js/test.txt"))
+        }
+        readFile()
+    </script>
+</body>
+</html>
